@@ -1,0 +1,61 @@
+O objetivo deste projeto é cadastrar mensagens "padrões" e que elas possam ser enviadas para alum número de whatsapp utilizando a API do whatsapp, para alcençar este objetivo, será necessário utilizar o javascript para deixar este projeto dinâmico:
+
+Atividade 1 - Criar o arquivo de script e vincular com o HTML:
+    ☐ Dentro da pasta public/js criar o arquivo main.js
+    ☐ Dentro do arquivo main.js, fazer um console.log("Start JS")
+    ☐ Vincular o arquivo de script criado no index.html para que ele possa reconhecer o arquivo
+    ☐ Abrir o arquivo index.html no navegador (recomendo utilizar a extensão do liveserver). Após abrir no navegador, abra o console e verifique se apareceu a mensagem que configuramos no arquivo do main.JS, se apareceu é sinal que a vinculação foi realizada com sucesso.
+
+Atividade 2 - Lembra dos seletores do DOM? Nesta atividade precisaremos capturar os elementos HTML que será importante para ocorrer o evento de cadastro da mensagem, para isso será necessário:
+    ☐ Capturar o input que está armazenado o valor da mensagem e salvar em uma variável
+    ☐ Capturar o botão que irá enviar as informações do input e salvar em uma variável.
+    ☐ Capturar a lista não ordenada e salvar em uma variável.
+    ☐ Capturar o item da lista não ordenada e salvar em uma variável.
+
+Atividade 3 - Vamos testar se os seletores que capturamos estão funcionando:
+    ☐ Adicionar um evento do tipo clique ao botão que estão enviando as informações do input.
+    ☐ Quando o evento ocorrer, você deve configurar para ele exibir um alerta exibindo o valor que foi digitado dentro do input.
+    ☐ Realize testes, caso ocorra tudo certo, pode apagar o alerta, pois sabemos que o evento está funcionando e está capturando o valor do input.
+
+Atividade 4 - A partir daqui vamos começar a deixar o projeto dinâmico utilizando o Javascript:
+    ☐ Criar uma função que irá gerar a estrutura da nossa li no html quando o evento ocorrer, esta função deve receber um parâmetro.
+    ☐ Observe bem a tag <li></li> no HTML para entender a sua árvore DOM.
+    ☐ Criar a estrutura da li de acordo com a sua árvore DOM utilizando o javascript.
+    ☐ Passar as classes, valores e atributos que cada elemento deve ter de acordo com o que está na sua estrutura DOM do HTML.
+    ☐ No arquivo index.html, é possível ver que cada li tem um hover, ou seja, quando o mouse está em sobre a li, ela aumenta de tamanho e tem um sombreamento. Na última li, tem um botão de fechar se olhar na sua estrutura do HTML ele está com a propriedade style.display = block.
+    ☐ Criar eventos para o botão de fechar, quando o mouse estiver sobre a li, o botão de fechar deve aparecer, quando o mouse sair da li, o botão de fechar deve desaparecer.
+    ☐ Agora que estamos com todos os elementos criados, seus eventos e atributos setados, precisamos inserir cada elemento dentro da li. Sua missão será inserir cada elemento dentro da li (lembre-se de consultar a árvore DOM da sua estrutura no HTML para passar as informações de maneira correta).
+    ☐ Agora que a estrutura da li está pronta, precisamos passar para dentro da ul, para que quando ocorra o evento de cadastro de uma mensagem, a li seja inserida dentro da ul na última posição disponível.
+
+Agora é a hora de testar. Dentro do evento do botão que criamos fora da função (aquele da atividade 3 onde colocamos um alerta para testar e depois excluimos..) você deve: 
+    ☐ Chamar a função que criamos na atividade 4 e passar o seu parâmetro, o parâmetro deve ser o valor que está no input.
+    ☐ Se der tudo certo, será criado uma nova li (card) com a mensagem que digitamos no input, mas se olhar no input, a mensagem que digitamos ainda estará lá, queremos que após que a li com a mensagem que queremos for criada, o valor do input fique vazio novamente, sua tarefa será fazer isso.
+    ☐ Atualize a página e faça um novo cadastrado para ver se o card foi criado com o valor do input da mensagem e se o input ficou vazio após a criação da li
+
+Atividade 5 - Agora iremos utilizar a API do WhatsApp para adicionar um evento em que quando o usuário clicar na li da mensagem, apareça um prompt solicitando para qual numero o usuário deseja enviar esta mensagem, caso ocorrar tudo certo devemos enviar a mensagem da li para o número informado na api do whatsapp. A api do whatsApp será aberta em uma nova janela para poder enviar a mensagem par ao número especificado. Para isso acotnecer, será necessário:
+    ☐ Criar uma nova função para disparar essa mensagem, esta função deve receber como parâmetro um valor
+    ☐ Dentro desta função criar a variável: message que vai armazenar o valor recebido do parâmetro da função
+    ☐ Criar uma outra variável com o nome number que deve receber o valor informado no prompt.
+        Dúvidas sobre como fazer isso? Consulte a documentação para verificar como utilizar o prompt: https://developer.mozilla.org/pt-BR/docs/Web/API/window/prompt
+    ☐ Criar a variável link, ela deve armazenar o link da API do whatsapp e receber como parâmetro em sua querystring os valores da variável number (na querystring phone=55 + variável number) e message na querystring text
+    ☐ URL base que vc deve deixar dentro da variável link: https://api.whatsapp.com/send?phone=55
+        No final a query string deve seguir este formato (exemplo): https://api.whatsapp.com/send?phone=5543912345678&text=Qualquer%20mensagem
+        Na query phone deve ser passado o número com 9 digitos
+        Na query text deve ser passado a mensagem
+    ☐ Criar uma condição se caso o número informado no prompt for menor que 9 digitos, bloquear a ação nativa de abrir o link da api do whatsapp em uma nova janela.
+    ☐ Caso passa na condição, deixar a abrir o link da api do whatsapp em numa nova janela.
+        Para isso será necessário utilizar o método: window.open() que deve reeber como parâmetro a variável que está o link com as informações. Ex: window.open(link)
+    
+Atividade 6 - Com a função de enviar mensagem criada, devemos inseri-lá dentro da função que cria uma nova li que realizamos na atividade 4. Para isso será necessário: 
+    ☐ Dentro da função que cria uma nova li, antes da linha que inserimos a li dentro da ul, devemos adicionar um evento para esta li. Este evento deve chamar a função que envia a mensagem para o whatsapp (que criamos na atividade 5) e passar como parâmetro o texto que está armazenado no elemento do paragrafo.
+    ☐ Atualizar o navegador e realizar um teste de cadastro de nova mensagem, clique na nova mensagem cadastrada e verifique se aparece o prompt, digite o número e clique em OK, caso ocorra tudo certo, irá abrir em uma nova janela a api do whatspp com o valor da mensagem que cadastramos pedindo permissão para enviar a mensagem pro número que informamos.
+
+Atividade 7 - Excluindo uma li. Nesta atividade queremos excluir uma li que foi criada, para isso será necessário:
+    ☐ Criar uma função para remover uma lista que já foi criada pelo javascript, essa função deve receber um parâmetro.
+    ☐ Criar um evento para o botão que excluir e adicionar está função.
+
+Atividade 8 - No arquivo index.html excluir as li que estão estáticas, pois agora deixamos o nosso projeto dinâmico com javascript:
+    ☐ Excluir todas as li que tem no arquivo index.html e salvar
+
+Atividade 9 - Agora que estamos com o projeto finalizado e funcionando basta realizar uma coisa:
+    ☐ Realizar o commit da vitória
